@@ -543,7 +543,13 @@ namespace diagnostic_updater
         }
         diagnostic_msgs::DiagnosticArray msg;
         msg.status = status_vec;
+#ifndef _ROS2
         msg.header.stamp = ros::Time::now(); // Add timestamp for ROS 0.10
+#else
+        ros::Time t(ros::Time::now());
+        msg.header.stamp.sec = t.sec;
+        msg.header.stamp.nanosec = t.nsec;
+#endif
         publisher_.publish(msg);
       }
 

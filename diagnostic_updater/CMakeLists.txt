@@ -4,6 +4,12 @@ project(diagnostic_updater)
 # Load catkin and all dependencies required for this package
 find_package(catkin REQUIRED diagnostic_msgs roscpp rostest std_msgs)
 
+find_package(ament_cmake QUIET)
+if (ament_cmake_FOUND)
+  set(CATKIN_DEPS roscpp sensor_msgs)
+  add_definitions(-D_ROS2 -std=c++11)
+endif()
+
 catkin_python_setup()
 
 catkin_package(DEPENDS diagnostic_msgs roscpp std_msgs
