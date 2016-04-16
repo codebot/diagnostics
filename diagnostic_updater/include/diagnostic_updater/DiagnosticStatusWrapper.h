@@ -48,6 +48,8 @@
 #include "ros/ros.h"
 
 #include "diagnostic_msgs/DiagnosticStatus.h"
+// Temporary, until we improve the ROS1 shim header generator
+#include "diagnostic_msgs/KeyValue.h"
 
 namespace diagnostic_updater
 {
